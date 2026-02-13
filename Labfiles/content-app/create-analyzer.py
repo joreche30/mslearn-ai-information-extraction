@@ -16,8 +16,7 @@ def main():
         # Get the business card schema
         with open("biz-card.json", "r") as file:
             schema_json = json.load(file)
-        
-        card_schema = json.dumps(schema_json)
+            card_schema = json.dumps(schema_json)
 
         # Get config settings
         load_dotenv()
@@ -27,13 +26,10 @@ def main():
 
         # Create the analyzer
         create_analyzer (card_schema, analyzer, ai_svc_endpoint, ai_svc_key)
-
         print("\n")
 
     except Exception as ex:
         print(ex)
-
-
 
 def create_analyzer (schema, analyzer, endpoint, key):
     
@@ -69,15 +65,15 @@ def create_analyzer (schema, analyzer, endpoint, key):
         time. sleep (1)
         result_response = requests. get (callback_url,  headers=headers)
         status = result_response. json (). get ("status")
+    
     result = result_response. json (). get ("status")
     print (result)
+    
     if result == "Succeeded":
         print (f"Analyzer '{analyzer}' created successfully.")
     else:
         print ("Analyzer creation failed.")
-    print (result_response. json ())
-
-
+        print (result_response. json ())
 
 if __name__ == "__main__":
     main()
